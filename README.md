@@ -112,5 +112,110 @@ menjalankan dan harus dibuat instance object terlebih dahulu.
 # Tampilan form
 ![image](https://github.com/user-attachments/assets/763a6dbd-83e8-4aa7-85fb-821118e8e0d9)
 
+# Tugas
+```
+Implementasikan dengan praktikum sebelumnya
+```
+# 1. Buat file config.php
+![image](https://github.com/user-attachments/assets/2ef35548-691c-4fb4-af19-27cb942aa8a1)
+# 2. Buat file database.php
+```
+<?php
 
+class Database
+{
+    protected $conn;
 
+    public function __construct($host, $user, $password, $db_name)
+    {
+        $this->conn = new mysqli($host, $user, $password, $db_name);
+
+        if ($this->conn->connect_error) {
+            die("Connection failed: " . $this->conn->connect_error);
+        }
+    }
+
+    public function query($sql)
+    {
+        return $this->conn->query($sql);
+    }
+
+    public function escapeString($value)
+    {
+        return $this->conn->real_escape_string($value);
+    }
+
+    public function closeConnection()
+    {
+        $this->conn->close();
+    }
+}
+
+?>
+```
+# Membuat file class library
+```
+
+<?php
+
+class FormLibrary
+{
+    public static function generateTable($result)
+    {
+        $tableHTML = '<table class="data-table">
+                        <tr>
+                            <th>Gambar</th>
+                            <th>Nama Barang</th>
+                            <th>Kategori</th>
+                            <th>Harga Jual</th>
+                            <th>Harga Beli</th>
+                            <th>Stok</th>
+                            <th>Aksi</th>
+                        </tr>';
+
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $tableHTML .= '<tr>
+                                <td><img src="gambar/' . $row['gambar'] . '" alt="' . $row['nama'] . '"></td>
+                                <td>' . $row['nama'] . '</td>
+                                <td>' . $row['kategori'] . '</td>
+                                <td>' . $row['harga_beli'] . '</td>
+                                <td>' . $row['harga_jual'] . '</td>
+                                <td>' . $row['stok'] . '</td>
+                                <td class="aksi">
+                                    <a class="ubah" href="ubah.php?id=' . $row['id_barang'] . '">Ubah</a>
+                                    <a class="hapus" href="hapus.php?id=' . $row['id_barang'] . '">Hapus</a>
+                                </td>
+                            </tr>';
+            }
+        } else {
+            $tableHTML .= '<tr>
+                            <td colspan="7">Belum ada data</td>
+                        </tr>';
+        }
+        
+
+        $tableHTML .= '</table>';
+        return $tableHTML;
+    }
+
+    public static function generateUbah($currentValue, $options)
+    {
+        $html = '';
+        foreach ($options as $value => $label) {
+            $selected = ($value == $currentValue) ? 'selected="selected"' : '';
+            $html .= "<option value=\"$value\" $selected>$label</option>";
+        }
+        return $html;
+    }
+}
+?>
+```
+# Menambahkan file tambah.php, ubah.php, hapus.php, index.php, header.php, kontak.php dan footer.php dari praktikum sebelumnya
+
+# Tampilan index.php
+![image](https://github.com/user-attachments/assets/87dc0ad0-d5e8-495a-8d3d-9fefd6895c7b)
+# Tampilan about.php
+![image](https://github.com/user-attachments/assets/0c8312a6-fb63-45b5-a073-0a64e98bb824)
+# Tampilan kontak.php
+![image](https://github.com/user-attachments/assets/6371265c-9055-451d-90e7-f8ff731f3dc0)
