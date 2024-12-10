@@ -219,3 +219,16 @@ class FormLibrary
 ![image](https://github.com/user-attachments/assets/0c8312a6-fb63-45b5-a073-0a64e98bb824)
 # Tampilan kontak.php
 ![image](https://github.com/user-attachments/assets/6371265c-9055-451d-90e7-f8ff731f3dc0)
+
+# Tambah
+![image](https://github.com/user-attachments/assets/a0cd8ded-8122-4a8c-81e4-e069e81e87bc)
+![image](https://github.com/user-attachments/assets/56864fd3-1113-4186-9117-31a6016b8ea7)
+
+# Ubah
+![image](https://github.com/user-attachments/assets/fb8a7026-5283-4bc1-a289-c083837d0a0d)
+![image](https://github.com/user-attachments/assets/b439a62f-688c-4280-848d-9cef4294a8e2)
+
+# Hapus, pilih barang yang ingin di hapus maka otomatis terhapus
+![image](https://github.com/user-attachments/assets/aefd5c55-2703-49b1-b984-ed74d4dbc49c)
+
+
